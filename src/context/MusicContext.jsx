@@ -44,19 +44,22 @@ export function MusicProvider({ children }) {
   }, []);
 
   useEffect(() => {
-    audioRef.current.src = songs[currentSongIndex].url;
-    if (isPlaying) {
-      audioRef.current.play().catch(e => console.log("Audio play failed:", e));
+    if (audioRef.current.src !== window.location.origin + songs[currentSongIndex].url) {
+      audioRef.current.src = songs[currentSongIndex].url;
+      audioRef.current.load();
     }
-  }, [currentSongIndex]);
-
-  useEffect(() => {
+    
     if (isPlaying) {
-      audioRef.current.play().catch(e => console.log("Audio play failed:", e));
+      const playPromise = audioRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(e => {
+          console.log("Audio play failed, waiting for user interaction:", e);
+        });
+      }
     } else {
       audioRef.current.pause();
     }
-  }, [isPlaying]);
+  }, [currentSongIndex, isPlaying]);
 
   useEffect(() => {
     audioRef.current.muted = isMuted;

@@ -24,6 +24,12 @@ const quotes = [
 export default function CinematicIntro() {
   return (
     <div className="bg-black text-white relative">
+      {/* Background Image for Intro */}
+      <div 
+        className="fixed inset-0 bg-cover bg-center opacity-30 grayscale blur-[2px]"
+        style={{ backgroundImage: 'url("/hero.png")' }}
+      />
+      
       {/* Floating Quotes and Hearts Background */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden opacity-30">
         {[...quotes, ...Array(10).fill("❤️")].map((item, i) => (
@@ -67,9 +73,9 @@ function Scene({ text, isLast }) {
     offset: ["start end", "end start"]
   });
 
-  const opacity = useTransform(scrollYProgress, [0.1, 0.4, 0.6, 0.9], [0, 1, 1, 0]);
-  const scale = useTransform(scrollYProgress, [0.1, 0.4, 0.6, 0.9], [0.8, 1, 1, 0.8]);
-  const y = useTransform(scrollYProgress, [0.1, 0.4, 0.6, 0.9], [50, 0, 0, -50]);
+  const opacity = useTransform(scrollYProgress, [0, 0.4, 0.6, 1], [1, 1, 1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.4, 0.6, 1], [1, 1, 1, 0.8]);
+  const y = useTransform(scrollYProgress, [0, 0.4, 0.6, 1], [0, 0, 0, -50]);
 
   return (
     <div ref={containerRef} className="h-screen w-full flex items-center justify-center sticky top-0">

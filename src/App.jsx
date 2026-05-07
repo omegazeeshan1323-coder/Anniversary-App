@@ -14,7 +14,7 @@ function App() {
     return localStorage.getItem('isLoggedIn') === 'true';
   });
   const [isUnlocked, setIsUnlocked] = useState(false);
-  const { togglePlay, isMuted, toggleMute, playSong } = useMusic();
+  const { isPlaying, togglePlay, isMuted, toggleMute, playSong, currentSong, skipForward } = useMusic();
 
   useEffect(() => {
     if (isUnlocked) {
@@ -75,14 +75,14 @@ function App() {
         >
           <div className="flex flex-col pr-4 border-r border-white/10">
             <span className="text-[10px] uppercase tracking-widest text-white/40 font-bold">Now Playing</span>
-            <span className="text-xs font-bold truncate max-w-[100px]">{useMusic().currentSong.title}</span>
+            <span className="text-xs font-bold truncate max-w-[100px]">{currentSong.title}</span>
           </div>
           
           <div className="flex items-center gap-2">
             <button onClick={togglePlay} className="p-2 hover:bg-white/10 rounded-full transition-colors">
               {isPlaying ? <Pause className="w-5 h-5 fill-white" /> : <Play className="w-5 h-5 fill-white" />}
             </button>
-            <button onClick={useMusic().skipForward} className="p-2 hover:bg-white/10 rounded-full transition-colors">
+            <button onClick={skipForward} className="p-2 hover:bg-white/10 rounded-full transition-colors">
               <SkipForward className="w-5 h-5 fill-white" />
             </button>
             <button onClick={toggleMute} className="p-2 hover:bg-white/10 rounded-full transition-colors">
