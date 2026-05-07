@@ -36,8 +36,8 @@ export default function Login({ onLogin }) {
             <Lock className={`w-8 h-8 ${error ? 'text-apple-red' : 'text-white/40'}`} />
           </motion.div>
           <div className="space-y-2">
-            <h1 className="text-3xl font-bold tracking-tight">Protected Archive</h1>
-            <p className="text-white/40 text-sm">Enter password to unlock our story</p>
+            <h1 className="text-3xl font-bold tracking-tight text-white">Protected Archive</h1>
+            <p className="text-white/60 text-sm">Enter password to unlock our story</p>
           </div>
         </div>
 

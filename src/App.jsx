@@ -5,7 +5,6 @@ import Lockscreen from './sections/Lockscreen';
 import CinematicIntro from './sections/CinematicIntro';
 import NetflixUI from './sections/NetflixUI';
 import SpotifyWrapped from './sections/SpotifyWrapped';
-import GameStory from './sections/GameStory';
 import FinalEnding from './sections/FinalEnding';
 
 function App() {
