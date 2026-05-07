@@ -8,9 +8,51 @@ const lines = [
   "Still my favorite person."
 ];
 
+const quotes = [
+  "You're my favorite place to be.",
+  "Every day with you is a gift.",
+  "1,096 days of choosing you.",
+  "My heart is and always will be yours.",
+  "To more adventures together.",
+  "You make life beautiful.",
+  "Forever wouldn't be long enough.",
+  "You're the best part of my day.",
+  "My favorite hello and hardest goodbye.",
+  "Still falling for you every single day."
+];
+
 export default function CinematicIntro() {
   return (
-    <div className="bg-black text-white">
+    <div className="bg-black text-white relative">
+      {/* Floating Quotes and Hearts Background */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden opacity-30">
+        {[...quotes, ...Array(10).fill("❤️")].map((item, i) => (
+          <motion.div
+            key={i}
+            initial={{ 
+              x: Math.random() * 100 + "%", 
+              y: "110%",
+              opacity: 0,
+              scale: Math.random() * 0.5 + 0.5
+            }}
+            animate={{ 
+              y: "-10%",
+              opacity: [0, 1, 1, 0],
+              x: (Math.random() * 100) + (Math.sin(i) * 10) + "%"
+            }}
+            transition={{ 
+              duration: Math.random() * 15 + 15, 
+              repeat: Infinity, 
+              delay: i * 3,
+              ease: "linear"
+            }}
+            className={`absolute font-bold whitespace-nowrap ${item === "❤️" ? "text-apple-red/40 text-xl" : "text-[10px] uppercase tracking-[0.4em] text-white/20"}`}
+          >
+            {item}
+          </motion.div>
+        ))}
+      </div>
+
       {lines.map((text, i) => (
         <Scene key={i} text={text} isLast={i === lines.length - 1} />
       ))}

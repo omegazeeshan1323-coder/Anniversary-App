@@ -4,9 +4,9 @@ import { Play, Plus, Info, X, ChevronRight } from 'lucide-react';
 
 const episodes = [
   { id: 1, title: "Your Mom", duration: "1s", description: "Where it all began. The message that set the tone, followed by writing 'coffee' on each other's hands.", thumbnail: "/memory.png" },
-  { id: 2, title: "The Terrace Lift", duration: "May 14", description: "May 14th 2023. Our first meet up after starting to date. Carrying you on the terrace.", thumbnail: "/hero.png" },
-  { id: 3, title: "McD Dates", duration: "Daily", description: "Countless hours spent over fries and burgers. Our happy place.", thumbnail: "/memory.png" },
-  { id: 4, title: "Mantri Sneaking", duration: "7 PM", description: "Sneaking inside Mantri during 2024 almost everyday around 7pm and going to the terrace.", thumbnail: "/hero.png" },
+  { id: 2, title: "Food", duration: "Daily", description: "From McD fries to rooftop dinners. Every meal was an adventure with you.", thumbnail: "/memory.png" },
+  { id: 3, title: "Drives", duration: "∞", description: "Midnight escapes and winding roads. The best conversations happen when we're going nowhere.", thumbnail: "/hero.png" },
+  { id: 4, title: "The Terrace", duration: "7 PM", description: "May 14th 2023. Sneaking inside Mantri and carrying you on the terrace under the stars.", thumbnail: "/hero.png" },
 ];
 
 export default function NetflixUI() {
@@ -127,7 +127,10 @@ export default function NetflixUI() {
                 {selectedEpisode.description}
               </p>
 
-              <button className="w-full bg-white text-black py-3 rounded font-bold flex items-center justify-center gap-2">
+              <button 
+                onClick={() => setSelectedEpisode(null)}
+                className="w-full bg-white text-black py-3 rounded font-bold flex items-center justify-center gap-2"
+              >
                 <Play className="w-5 h-5 fill-black" /> Resume Episode
               </button>
             </div>

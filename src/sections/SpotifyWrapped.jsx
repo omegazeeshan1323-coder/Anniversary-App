@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, Pause, SkipBack, SkipForward, Heart } from 'lucide-react';
+import { useMusic } from '../context/MusicContext';
 
 const cards = [
   { 
@@ -36,6 +37,7 @@ const cards = [
 export default function SpotifyWrapped() {
   const [index, setIndex] = useState(0);
   const [progress, setProgress] = useState(0);
+  const { currentSong, isPlaying, togglePlay, skipForward, skipBack } = useMusic();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -117,13 +119,19 @@ export default function SpotifyWrapped() {
                 <Heart className="w-6 h-6 text-white fill-white" />
               </div>
               <div className="flex-1">
-                <p className="font-bold text-sm">Drag Path</p>
-                <p className="text-xs text-white/60">Twenty One Pilots</p>
+                <p className="font-bold text-sm">
+                  {currentSong.title}
+                </p>
+                <p className="text-xs text-white/60">
+                  {currentSong.artist}
+                </p>
               </div>
               <div className="flex items-center gap-4">
-                <SkipBack className="w-4 h-4" />
-                <Pause className="w-6 h-6 fill-white" />
-                <SkipForward className="w-4 h-4" />
+                <SkipBack className="w-4 h-4 cursor-pointer hover:scale-110" onClick={(e) => { e.stopPropagation(); skipBack(); }} />
+                <div onClick={(e) => { e.stopPropagation(); togglePlay(); }} className="cursor-pointer hover:scale-110">
+                  {isPlaying ? <Pause className="w-6 h-6 fill-white" /> : <Play className="w-6 h-6 fill-white" />}
+                </div>
+                <SkipForward className="w-4 h-4 cursor-pointer hover:scale-110" onClick={(e) => { e.stopPropagation(); skipForward(); }} />
               </div>
             </div>
           </div>

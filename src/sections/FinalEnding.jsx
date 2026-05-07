@@ -53,16 +53,22 @@ export default function FinalEnding() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 6 }}
-          className="space-y-4"
+          className="space-y-8 pt-10"
         >
-          <p className="text-white/60 font-medium">Renewed for another season ❤️</p>
-          <div className="flex justify-center gap-1">
-            {[1, 2, 3, 4, 5].map((i) => (
+          <p className="text-white/60 font-medium italic">"Renewed for another season ❤️"</p>
+          
+          <div className="pt-10 space-y-2 border-t border-white/10">
+            <h3 className="text-2xl font-bold tracking-tighter uppercase opacity-80">Doggesh & Dustbin</h3>
+            <p className="text-[10px] tracking-[0.5em] uppercase text-white/30">Forever and Always</p>
+          </div>
+
+          <div className="flex justify-center gap-2">
+            {[1, 2, 3].map((i) => (
               <motion.div
                 key={i}
-                animate={{ scale: [1, 1.2, 1], opacity: [0.3, 1, 0.3] }}
-                transition={{ repeat: Infinity, duration: 2, delay: i * 0.2 }}
-                className="w-1.5 h-1.5 rounded-full bg-apple-red"
+                animate={{ scale: [1, 1.5, 1], opacity: [0.3, 1, 0.3] }}
+                transition={{ repeat: Infinity, duration: 2, delay: i * 0.4 }}
+                className="w-2 h-2 rounded-full bg-apple-red shadow-[0_0_10px_rgba(255,59,48,0.8)]"
               />
             ))}
           </div>
