@@ -1,74 +1,112 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Lock, ChevronRight } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Login({ onLogin }) {
-  const [password, setPassword] = useState('');
+  const [view, setView] = useState('profiles'); // 'profiles' or 'pin'
+  const [pin, setPin] = useState('');
   const [error, setError] = useState(false);
 
-  const handleSubmit = (e) => {
+  const profiles = [
+    { name: 'Zahira', color: 'bg-blue-500', icon: '👩‍❤️‍👨' },
+    { name: 'Doggesh', color: 'bg-red-600', icon: '🐶' },
+    { name: 'Add Profile', color: 'bg-transparent border-2 border-white/20', icon: '+' }
+  ];
+
+  const handlePinSubmit = (e) => {
     e.preventDefault();
-    if (password.toLowerCase() === 'zahira') {
+    if (pin.toLowerCase() === 'zahira') {
       onLogin();
     } else {
       setError(true);
+      setPin('');
       setTimeout(() => setError(false), 500);
-      setPassword('');
     }
   };
 
   return (
-    <div className="h-screen w-screen bg-black flex flex-col items-center justify-center p-6 overflow-hidden relative">
-      {/* Background soft glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-apple-red/10 rounded-full blur-[100px] pointer-events-none" />
-
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="z-10 w-full max-w-sm space-y-12 text-center"
-      >
-        <div className="space-y-4">
+    <div className="min-h-screen bg-black flex items-center justify-center font-sans overflow-hidden">
+      <AnimatePresence mode="wait">
+        {view === 'profiles' ? (
           <motion.div
-            animate={error ? { x: [-10, 10, -10, 10, 0] } : {}}
-            transition={{ duration: 0.4 }}
-            className="w-16 h-16 bg-apple-gray rounded-2xl flex items-center justify-center mx-auto border border-white/10"
+            key="profiles"
+            initial={{ opacity: 0, scale: 1.1 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            className="flex flex-col items-center gap-10"
           >
-            <Lock className={`w-8 h-8 ${error ? 'text-apple-red' : 'text-white/40'}`} />
+            <h1 className="text-3xl md:text-5xl font-medium text-white tracking-tight">Who's watching?</h1>
+            
+            <div className="flex gap-4 md:gap-8">
+              {profiles.map((p, i) => (
+                <motion.div
+                  key={i}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => p.name === 'Zahira' ? setView('pin') : null}
+                  className="flex flex-col items-center gap-3 cursor-pointer group"
+                >
+                  <div className={`w-24 h-24 md:w-32 md:h-32 rounded flex items-center justify-center text-4xl shadow-lg transition-all group-hover:ring-4 group-hover:ring-white ${p.color}`}>
+                    {p.name === 'Add Profile' ? <span className="text-white/40 text-4xl font-light">{p.icon}</span> : p.icon}
+                  </div>
+                  <span className={`text-sm md:text-lg ${p.name === 'Zahira' ? 'text-white' : 'text-white/40'} group-hover:text-white`}>
+                    {p.name}
+                  </span>
+                </motion.div>
+              ))}
+            </div>
+
+            <button className="mt-12 px-8 py-2 border border-white/40 text-white/40 hover:text-white hover:border-white transition-colors tracking-widest text-sm uppercase">
+              Manage Profiles
+            </button>
           </motion.div>
-          <div className="space-y-2">
-            <h1 className="text-3xl font-bold tracking-tight text-white">Protected Archive</h1>
-            <p className="text-white/60 text-sm">Enter password to unlock our story</p>
-          </div>
-        </div>
-
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="relative group">
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="••••••••"
-              className={`w-full bg-apple-gray/50 border ${error ? 'border-apple-red' : 'border-white/10'} rounded-2xl py-4 px-6 text-center text-2xl tracking-[0.5em] focus:outline-none focus:border-white/20 transition-all backdrop-blur-xl placeholder:text-white/10`}
-              autoFocus
-            />
-          </div>
-
-          <motion.button
-            whileTap={{ scale: 0.95 }}
-            type="submit"
-            className="w-full bg-white text-black py-4 rounded-2xl font-bold flex items-center justify-center gap-2 group hover:bg-white/90 transition-colors"
+        ) : (
+          <motion.div
+            key="pin"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="flex flex-col items-center gap-8 w-full max-w-xs"
           >
-            Access Memories
-            <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </motion.button>
-        </form>
+            <div className="w-24 h-24 rounded bg-blue-500 flex items-center justify-center text-4xl shadow-2xl">
+              👩‍❤️‍👨
+            </div>
+            
+            <div className="text-center space-y-2">
+              <h2 className="text-xl font-bold text-white">Profile Lock is on.</h2>
+              <p className="text-sm text-white/60">Enter password to access this profile.</p>
+            </div>
 
-        <div className="pt-12">
-          <p className="text-[10px] uppercase tracking-[0.3em] text-white/20 font-bold">
-            Authorized Personnel Only
-          </p>
-        </div>
-      </motion.div>
+            <form onSubmit={handlePinSubmit} className="w-full space-y-6">
+              <div className="relative">
+                <input
+                  type="password"
+                  autoFocus
+                  value={pin}
+                  onChange={(e) => setPin(e.target.value)}
+                  placeholder="Enter Password"
+                  className={`w-full bg-[#333] text-white px-4 py-4 rounded focus:outline-none focus:ring-2 focus:ring-red-600 transition-all text-center tracking-widest ${error ? 'border-2 border-red-600 animate-pulse' : ''}`}
+                />
+              </div>
+
+              <div className="flex flex-col gap-4">
+                <button 
+                  type="submit"
+                  className="w-full bg-white text-black py-3 rounded font-bold hover:bg-white/90 transition-colors"
+                >
+                  Enter
+                </button>
+                <button 
+                  type="button"
+                  onClick={() => setView('profiles')}
+                  className="w-full text-white/60 text-sm hover:text-white"
+                >
+                  Back to Profiles
+                </button>
+              </div>
+            </form>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

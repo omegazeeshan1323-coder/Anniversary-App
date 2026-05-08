@@ -10,21 +10,17 @@ import { useMusic } from './context/MusicContext';
 import { Play, Pause, SkipForward, Volume2, VolumeX } from 'lucide-react';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(() => {
-    return localStorage.getItem('isLoggedIn') === 'true';
-  });
-  const [isUnlocked, setIsUnlocked] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const { isPlaying, togglePlay, isMuted, toggleMute, playSong, currentSong, skipForward } = useMusic();
 
   useEffect(() => {
-    if (isUnlocked) {
+    if (isLoggedIn) {
       playSong(0);
     }
-  }, [isUnlocked]);
+  }, [isLoggedIn]);
 
   const handleLogin = () => {
     setIsLoggedIn(true);
-    localStorage.setItem('isLoggedIn', 'true');
   };
 
   return (
@@ -39,16 +35,6 @@ function App() {
             transition={{ duration: 0.5 }}
           >
             <Login onLogin={handleLogin} />
-          </motion.div>
-        ) : !isUnlocked ? (
-          <motion.div
-            key="lockscreen"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0, y: -100, filter: 'blur(20px)' }}
-            transition={{ duration: 0.8, ease: [0.32, 0.72, 0, 1] }}
-          >
-            <Lockscreen onUnlock={() => setIsUnlocked(true)} />
           </motion.div>
         ) : (
           <motion.main
@@ -67,7 +53,7 @@ function App() {
       </AnimatePresence>
 
       {/* Global Music Control Mini-Player - Slimmer and better positioned */}
-      {isUnlocked && (
+      {isLoggedIn && (
         <motion.div
           initial={{ opacity: 0, y: 100 }}
           animate={{ opacity: 1, y: 0 }}
