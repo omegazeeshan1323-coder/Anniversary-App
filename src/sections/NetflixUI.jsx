@@ -21,21 +21,21 @@ export default function NetflixUI() {
   return (
     <div className="relative min-h-screen bg-black text-white overflow-x-hidden">
       {/* Hero Section */}
-      <div className="relative h-[75vh] w-full">
+      <div className="relative h-[65vh] w-full">
         <img 
           src="/hero.png" 
           className="absolute inset-0 w-full h-full object-cover brightness-75"
           alt="Hero"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
         
-        <div className="absolute bottom-12 left-0 px-6 space-y-3 w-full">
+        <div className="absolute bottom-10 left-0 px-6 space-y-3 w-full">
           <div className="flex flex-col gap-1">
             <div className="flex items-center gap-2">
               <div className="bg-red-600 px-1 text-[8px] font-bold rounded-sm uppercase tracking-tighter">Original</div>
               <span className="text-[10px] font-bold text-white/60 uppercase tracking-[0.3em]">Documentary</span>
             </div>
-            <h1 className="text-3xl md:text-5xl font-black tracking-tighter uppercase italic leading-none">
+            <h1 className="text-3xl font-black tracking-tighter uppercase italic leading-none">
               Doggesh &<br />Dustbin
             </h1>
           </div>
@@ -45,10 +45,10 @@ export default function NetflixUI() {
           </p>
 
           <div className="flex items-center gap-2 pt-2">
-            <button className="flex-1 flex items-center justify-center gap-2 bg-white text-black py-2 rounded-md font-bold text-sm hover:bg-white/90 transition-colors">
+            <button className="flex-1 flex items-center justify-center gap-2 bg-white text-black py-2 rounded-md font-bold text-sm">
               <Play className="w-4 h-4 fill-black" /> Play
             </button>
-            <button className="flex-1 flex items-center justify-center gap-2 bg-gray-500/30 text-white py-2 rounded-md font-bold text-sm backdrop-blur-md border border-white/10">
+            <button className="flex-1 flex items-center justify-center gap-2 bg-gray-500/30 text-white py-2 rounded-md font-bold text-sm backdrop-blur-md">
               <Plus className="w-4 h-4" /> My List
             </button>
           </div>
@@ -61,37 +61,40 @@ export default function NetflixUI() {
       </div>
 
       {/* Continue Watching */}
-      <div className="px-6 mt-8 space-y-6 pb-32">
+      <div className="px-6 mt-6 space-y-6 pb-32">
         <div className="flex items-center justify-between">
-          <h2 className="text-xl font-bold tracking-tight">Continue Watching</h2>
-          <span className="text-xs text-red-600 font-bold">See All</span>
+          <h2 className="text-lg font-bold tracking-tight">Continue Watching</h2>
+          <span className="text-xs text-red-600 font-bold uppercase tracking-widest">See All</span>
         </div>
         
-        <div className="flex gap-4 overflow-x-auto no-scrollbar pb-8 -mx-6 px-6">
+        <div className="flex gap-4 overflow-x-auto no-scrollbar pb-4 -mx-6 px-6">
           {episodes.map((ep) => (
             <motion.div
               key={ep.id}
               whileTap={{ scale: 0.95 }}
               onClick={() => setSelectedEpisode(ep)}
-              className="flex-shrink-0 w-40 space-y-2 cursor-pointer"
+              className="flex-shrink-0 w-64 space-y-2 cursor-pointer"
             >
-              <div className="relative aspect-[2/3] rounded-lg overflow-hidden border border-white/5 bg-gray-900 group">
+              <div className="relative aspect-video rounded-lg overflow-hidden border border-white/5 bg-gray-900 group">
                 <img src={ep.thumbnail} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt={ep.title} />
-                <div className="absolute bottom-0 left-0 w-full h-1 bg-gray-600/50">
+                <div className="absolute bottom-0 left-0 w-full h-1 bg-gray-600/30">
                   <div className="h-full bg-red-600 w-2/3" />
                 </div>
                 <div className="absolute inset-0 flex items-center justify-center bg-black/10 group-hover:bg-black/30 transition-colors">
-                  <div className="w-10 h-10 rounded-full border-2 border-white/80 flex items-center justify-center backdrop-blur-sm">
-                    <Play className="w-4 h-4 fill-white ml-1" />
+                  <div className="w-12 h-12 rounded-full border-2 border-white/80 flex items-center justify-center backdrop-blur-sm shadow-2xl">
+                    <Play className="w-5 h-5 fill-white ml-1" />
                   </div>
                 </div>
                 {ep.type === 'video' && (
-                  <div className="absolute top-2 right-2 bg-black/50 p-1 rounded-md backdrop-blur-md border border-white/10">
-                    <Play className="w-2.5 h-2.5 fill-white" />
+                  <div className="absolute top-2 right-2 bg-black/60 p-1.5 rounded-md backdrop-blur-md border border-white/10">
+                    <Play className="w-3 h-3 fill-white" />
                   </div>
                 )}
               </div>
-              <p className="text-xs font-semibold text-gray-300 line-clamp-1">{ep.title}</p>
+              <div className="space-y-0.5">
+                <p className="text-sm font-bold text-gray-200 line-clamp-1 uppercase tracking-tight">{ep.title}</p>
+                <p className="text-[10px] text-gray-500 font-medium">Episode {ep.id} • {ep.duration}</p>
+              </div>
             </motion.div>
           ))}
         </div>
