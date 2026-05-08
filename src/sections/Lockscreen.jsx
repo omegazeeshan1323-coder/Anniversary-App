@@ -25,7 +25,7 @@ export default function Lockscreen({ onUnlock }) {
     <div className="relative h-screen w-screen overflow-hidden bg-black">
       {/* Background Wallpaper */}
       <div 
-        className="absolute inset-0 bg-cover bg-center scale-105 blur-sm brightness-75"
+        className="absolute inset-0 bg-cover bg-center scale-110 blur-[2px] brightness-75 transition-transform duration-1000"
         style={{ backgroundImage: 'url("/lockscreen.png")' }}
       />
       
