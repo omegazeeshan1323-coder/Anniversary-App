@@ -73,17 +73,17 @@ export default function Dashboard() {
       <div className="relative h-screen w-full overflow-hidden bg-black flex items-center justify-center">
         {/* Blurred Backdrop to fill space */}
         <img 
-          src="/hero.png" 
+          src="/poster.jpeg" 
           className="absolute inset-0 w-full h-full object-cover blur-3xl opacity-40 scale-110"
           alt=""
         />
         
-        {/* Original Photo - No Crop */}
+        {/* Album Cover Photo - No Crop */}
         <motion.img 
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1 }}
-          src="/hero.png" 
+          src="/poster.jpeg" 
           className="relative z-10 max-w-full max-h-full object-contain drop-shadow-[0_0_50px_rgba(0,0,0,0.8)]"
         />
 
@@ -91,44 +91,15 @@ export default function Dashboard() {
         <div className="absolute inset-0 z-20 bg-gradient-to-t from-black via-transparent to-transparent" />
         <div className="absolute inset-0 z-20 bg-gradient-to-b from-black/40 via-transparent to-transparent" />
 
-        <div className="absolute bottom-12 left-0 px-6 md:px-12 w-full md:max-w-2xl space-y-4 z-30">
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.5 }}
-          >
-            {/* New Soundtrack Poster */}
-            <motion.div
-              animate={{ y: [0, -5, 0] }}
-              transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-              className="mb-8"
-            >
-              <img 
-                src="/poster.jpeg" 
-                className="w-48 md:w-64 rounded-lg shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10"
-                alt="Soundtrack Poster"
-              />
-            </motion.div>
-
-            <div className="flex items-center gap-2 mb-1">
-              <span className="bg-red-600 px-1.5 py-0.5 rounded-sm text-[8px] font-black uppercase tracking-tighter italic">N Series</span>
-            </div>
-            <h1 className="text-4xl md:text-7xl font-black italic tracking-tighter uppercase leading-none mb-2 drop-shadow-xl">
-              Doggesh &<br />Dustbin
-            </h1>
-            <p className="text-[12px] md:text-lg text-gray-200 drop-shadow-lg leading-snug max-w-[280px]">
-              An epic 3-year journey of love, growth, and endless memories.
-            </p>
-          </motion.div>
-
+        <div className="absolute bottom-20 left-0 px-6 md:px-12 w-full md:max-w-2xl space-y-6 z-30 flex flex-col items-center md:items-start text-center md:text-left">
           <div className="flex items-center gap-2">
             <button 
               onClick={() => setSelectedEpisode(seasons[0].episodes[0])}
-              className="flex-1 md:flex-none flex items-center justify-center gap-2 bg-white text-black py-2.5 px-8 rounded-md font-bold text-sm hover:bg-white/90 active:scale-95 transition-all shadow-xl"
+              className="flex-1 md:flex-none flex items-center justify-center gap-2 bg-white text-black py-3 px-10 rounded-md font-bold text-sm hover:bg-white/90 active:scale-95 transition-all shadow-xl"
             >
               <Play className="w-5 h-5 fill-black" /> Play
             </button>
-            <button className="flex-1 md:flex-none flex items-center justify-center gap-2 bg-gray-500/40 text-white py-2.5 px-8 rounded-md font-bold text-sm backdrop-blur-md border border-white/10 shadow-xl">
+            <button className="flex-1 md:flex-none flex items-center justify-center gap-2 bg-gray-500/40 text-white py-3 px-10 rounded-md font-bold text-sm backdrop-blur-md border border-white/10 shadow-xl">
               <Plus className="w-5 h-5" /> My List
             </button>
           </div>
