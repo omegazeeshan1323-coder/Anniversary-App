@@ -16,8 +16,25 @@ const seasons = [
   {
     title: "Season 2: Adventures",
     episodes: [
-      { id: 201, title: "Food Tour", thumbnail: "/IMG_1670.JPG", description: "From McD fries to rooftop treats. We've tasted it all together.", media: ["/IMG_1670.JPG", "/WhatsApp Image 2026-05-08 at 11.51.15 AM.jpeg", "/WhatsApp Image 2026-05-08 at 11.51.15 AM (1).jpeg"] },
-      { id: 202, title: "Adventures", thumbnail: "/WhatsApp Image 2026-05-08 at 11.51.14 AM (1).jpeg", description: "Getting lost, finding beauty, and making every second count.", media: ["/WhatsApp Video 2026-05-08 at 11.51.15 AM.mp4", "/memory.png"] },
+      { 
+        id: 201, 
+        title: "Food Tour", 
+        thumbnail: "/IMG_1670.JPG", 
+        description: "From McD fries to rooftop treats. Every video and photo of our delicious journey.", 
+        media: [
+          "/IMG_1670.JPG", 
+          "/WhatsApp Image 2026-05-08 at 11.51.15 AM.jpeg", 
+          "/WhatsApp Image 2026-05-08 at 11.51.15 AM (1).jpeg",
+          "/-3905718339118603128.MP4",
+          "/6253243033101760670.MP4",
+          "/6737424863088449495.MP4",
+          "/6857776767886984412.MP4",
+          "/7262058012806167165.MP4",
+          "/7899805083313960292.MP4",
+          "/WhatsApp Video 2026-05-08 at 11.51.15 AM.mp4"
+        ] 
+      },
+      { id: 202, title: "Adventures", thumbnail: "/WhatsApp Image 2026-05-08 at 11.51.14 AM (1).jpeg", description: "Getting lost, finding beauty, and making every second count.", media: ["/memory.png", "/WhatsApp Image 2026-05-08 at 11.51.14 AM (1).jpeg"] },
     ]
   },
   {
