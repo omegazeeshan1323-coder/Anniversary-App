@@ -1,100 +1,55 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Heart } from 'lucide-react';
+import { Music, ExternalLink } from 'lucide-react';
 
 export default function FinalEnding() {
+  // Replace this with your actual Spotify Playlist URL
+  const SPOTIFY_PLAYLIST_URL = "https://open.spotify.com/playlist/YOUR_PLAYLIST_ID";
+
   return (
-    <div className="min-h-screen bg-black flex flex-col items-center justify-center p-8 pb-32 text-center relative overflow-hidden">
-      {/* Background soft glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-apple-red/10 rounded-full blur-[120px] pointer-events-none" />
+    <div className="min-h-screen bg-black flex flex-col items-center justify-center text-center px-8 relative overflow-hidden">
+      {/* Background Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-red-600/10 blur-[120px] rounded-full pointer-events-none" />
 
-      <div className="space-y-12 relative z-10 max-w-sm">
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 2 }}
-          className="space-y-4"
-        >
-          <p className="text-white/40 tracking-[0.3em] uppercase text-xs font-bold">The Conclusion</p>
-          <h2 className="text-4xl font-bold tracking-tight text-cinematic">And after all this time...</h2>
-        </motion.div>
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1.5 }}
+        className="space-y-12 relative z-10"
+      >
+        <div className="space-y-4">
+          <h2 className="text-4xl md:text-6xl font-black italic tracking-tighter uppercase leading-none">
+            To Many More<br />Seasons of Us
+          </h2>
+          <p className="text-gray-400 max-w-md mx-auto text-sm md:text-lg">
+            Our story is far from over. This is just the beginning of the greatest series ever made.
+          </p>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 2, duration: 1.5 }}
-          className="text-5xl font-black italic text-apple-red"
-        >
-          I'd still choose you.
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 4, duration: 1 }}
-          className="glass p-8 rounded-[2.5rem] text-left space-y-6"
-        >
-          <div className="space-y-4">
-            <p className="font-serif italic text-lg leading-relaxed text-white/90">
-              Three years ago, I didn't know how much my life would change. You've been my anchor, my best friend, and my greatest adventure. Thank you for every second.
-            </p>
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-apple-red/20 flex items-center justify-center">
-                <Heart className="w-5 h-5 text-apple-red fill-apple-red" />
-              </div>
-              <p className="font-bold">Always yours.</p>
+        <div className="flex flex-col items-center gap-6">
+          <p className="text-xs font-bold uppercase tracking-[0.3em] text-white/40">Our Soundtrack</p>
+          
+          <motion.a
+            href={SPOTIFY_PLAYLIST_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="group relative flex items-center gap-3 bg-[#1DB954] text-black px-8 py-4 rounded-full font-bold text-lg shadow-[0_0_30px_rgba(29,185,84,0.3)] transition-all hover:shadow-[0_0_50px_rgba(29,185,84,0.5)]"
+          >
+            <div className="w-8 h-8 flex items-center justify-center bg-black rounded-full text-[#1DB954]">
+              <Music className="w-5 h-5 fill-current" />
             </div>
-          </div>
-          
-          <img src="/montage.png" className="w-full h-48 object-cover rounded-2xl grayscale hover:grayscale-0 transition-all duration-700" alt="Montage" />
-        </motion.div>
+            <span>Listen on Spotify</span>
+            <ExternalLink className="w-4 h-4 opacity-40 group-hover:opacity-100 transition-opacity" />
+          </motion.a>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 6 }}
-          className="space-y-8 pt-10"
-        >
-          <p className="text-white/60 font-medium italic">"Renewed for another season ❤️"</p>
-          
-          <div className="pt-10 space-y-2 border-t border-white/10">
-            <h3 className="text-2xl font-bold tracking-tighter uppercase opacity-80">Doggesh & Dustbin</h3>
-            <p className="text-[10px] tracking-[0.5em] uppercase text-white/30">Forever and Always</p>
-          </div>
-
-          <div className="flex justify-center gap-2">
-            {[1, 2, 3].map((i) => (
-              <motion.div
-                key={i}
-                animate={{ scale: [1, 1.5, 1], opacity: [0.3, 1, 0.3] }}
-                transition={{ repeat: Infinity, duration: 2, delay: i * 0.4 }}
-                className="w-2 h-2 rounded-full bg-apple-red shadow-[0_0_10px_rgba(255,59,48,0.8)]"
-              />
-            ))}
-          </div>
-        </motion.div>
-      </div>
-
-      {/* Floating particles */}
-      {[...Array(15)].map((_, i) => (
-        <motion.div
-          key={i}
-          className="absolute w-1 h-1 bg-white/20 rounded-full"
-          initial={{ 
-            x: Math.random() * window.innerWidth, 
-            y: Math.random() * window.innerHeight 
-          }}
-          animate={{ 
-            y: [null, -100],
-            opacity: [0, 1, 0]
-          }}
-          transition={{ 
-            duration: Math.random() * 5 + 5, 
-            repeat: Infinity, 
-            ease: "linear" 
-          }}
-        />
-      ))}
+        <div className="pt-20">
+          <p className="text-[10px] text-white/20 uppercase tracking-widest">Designed for Sana & Sai • 2024</p>
+        </div>
+      </motion.div>
     </div>
   );
 }
