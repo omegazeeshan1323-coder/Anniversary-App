@@ -8,9 +8,22 @@ const seasons = [
   {
     title: "Season 1: The Beginning",
     episodes: [
-      { id: 101, title: "The first Hello", thumbnail: "/IMG_1658.JPG", description: "Where the spark first ignited. A simple hello that changed everything.", media: ["/IMG_1658.JPG", "/WhatsApp Image 2026-05-08 at 11.51.14 AM.jpeg"] },
+      { id: 101, title: "The first Hello", thumbnail: "/IMG_1658.JPG", description: "Where the spark first ignited. A simple hello that changed everything.", media: ["/IMG_1658.JPG"] },
       { id: 102, title: "Our first date", thumbnail: "/IMG_1665.JPG", description: "Coffee, nerves, and that feeling that you were the one.", media: ["/IMG_1665.JPG", "/IMG_1671.JPG"] },
-      { id: 103, title: "Gmeets", thumbnail: "/WhatsApp Image 2026-05-08 at 11.51.14 AM (2).jpeg", description: "Distance was just a number when we had our late-night screens.", media: ["/WhatsApp Image 2026-05-08 at 11.51.14 AM (2).jpeg", "/WhatsApp Image 2026-05-08 at 11.51.14 AM (3).jpeg"] },
+      { 
+        id: 103, 
+        title: "Gmeets", 
+        thumbnail: "/WhatsApp Image 2026-05-08 at 11.51.14 AM (2).jpeg", 
+        description: "Distance was just a number when we had our late-night screens. Every screenshot is a treasure.", 
+        media: [
+          "/WhatsApp Image 2026-05-08 at 11.51.14 AM.jpeg", 
+          "/WhatsApp Image 2026-05-08 at 11.51.14 AM (1).jpeg", 
+          "/WhatsApp Image 2026-05-08 at 11.51.14 AM (2).jpeg", 
+          "/WhatsApp Image 2026-05-08 at 11.51.14 AM (3).jpeg",
+          "/WhatsApp Image 2026-05-08 at 11.51.15 AM.jpeg",
+          "/WhatsApp Image 2026-05-08 at 11.51.15 AM (1).jpeg"
+        ] 
+      },
     ]
   },
   {
@@ -23,8 +36,6 @@ const seasons = [
         description: "From McD fries to rooftop treats. Every video and photo of our delicious journey.", 
         media: [
           "/IMG_1670.JPG", 
-          "/WhatsApp Image 2026-05-08 at 11.51.15 AM.jpeg", 
-          "/WhatsApp Image 2026-05-08 at 11.51.15 AM (1).jpeg",
           "/-3905718339118603128.MP4",
           "/6253243033101760670.MP4",
           "/6737424863088449495.MP4",
@@ -34,7 +45,7 @@ const seasons = [
           "/WhatsApp Video 2026-05-08 at 11.51.15 AM.mp4"
         ] 
       },
-      { id: 202, title: "Adventures", thumbnail: "/WhatsApp Image 2026-05-08 at 11.51.14 AM (1).jpeg", description: "Getting lost, finding beauty, and making every second count.", media: ["/memory.png", "/WhatsApp Image 2026-05-08 at 11.51.14 AM (1).jpeg"] },
+      { id: 202, title: "Adventures", thumbnail: "/memory.png", description: "Getting lost, finding beauty, and making every second count.", media: ["/memory.png", "/IMG_1671.JPG"] },
     ]
   },
   {
