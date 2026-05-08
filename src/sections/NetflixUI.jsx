@@ -29,28 +29,33 @@ export default function NetflixUI() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
         
-        <div className="absolute bottom-10 left-0 px-6 space-y-4 w-full">
-          <div className="flex items-center gap-2">
-            <div className="bg-red-600 px-1 text-[10px] font-bold rounded-sm uppercase">Original</div>
-            <h1 className="text-4xl md:text-5xl font-black tracking-tight uppercase italic">Doggesh & Dustbin</h1>
+        <div className="absolute bottom-12 left-0 px-6 space-y-3 w-full">
+          <div className="flex flex-col gap-1">
+            <div className="flex items-center gap-2">
+              <div className="bg-red-600 px-1 text-[8px] font-bold rounded-sm uppercase tracking-tighter">Original</div>
+              <span className="text-[10px] font-bold text-white/60 uppercase tracking-[0.3em]">Documentary</span>
+            </div>
+            <h1 className="text-3xl md:text-5xl font-black tracking-tighter uppercase italic leading-none">
+              Doggesh &<br />Dustbin
+            </h1>
           </div>
           
-          <p className="text-sm text-gray-300 max-w-xs line-clamp-2 drop-shadow-lg">
+          <p className="text-[12px] text-gray-300 max-w-[280px] leading-snug drop-shadow-lg opacity-90">
             An original documentary series exploring 3 years of love, growth, and countless memories.
           </p>
 
-          <div className="flex items-center gap-3">
-            <button className="flex items-center gap-2 bg-white text-black px-6 py-2.5 rounded font-bold text-sm hover:bg-white/90 transition-colors">
+          <div className="flex items-center gap-2 pt-2">
+            <button className="flex-1 flex items-center justify-center gap-2 bg-white text-black py-2 rounded-md font-bold text-sm hover:bg-white/90 transition-colors">
               <Play className="w-4 h-4 fill-black" /> Play
             </button>
-            <button className="flex items-center gap-2 bg-gray-500/30 text-white px-6 py-2.5 rounded font-bold text-sm backdrop-blur-md border border-white/10">
+            <button className="flex-1 flex items-center justify-center gap-2 bg-gray-500/30 text-white py-2 rounded-md font-bold text-sm backdrop-blur-md border border-white/10">
               <Plus className="w-4 h-4" /> My List
             </button>
           </div>
         </div>
 
-        {/* Skip Intro with Safe Area handling */}
-        <button className="absolute top-[calc(1.5rem+env(safe-area-inset-top,0px))] right-6 text-white/70 text-[10px] font-bold border border-white/30 px-3 py-1.5 rounded-sm backdrop-blur-sm tracking-widest uppercase">
+        {/* Skip Intro with deeper Safe Area handling */}
+        <button className="absolute top-[calc(3.5rem+env(safe-area-inset-top,0px))] right-6 text-white/80 text-[9px] font-bold border border-white/20 px-4 py-2 rounded-sm backdrop-blur-md tracking-[0.2em] uppercase">
           Skip Intro
         </button>
       </div>
