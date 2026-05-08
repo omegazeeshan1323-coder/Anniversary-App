@@ -61,7 +61,7 @@ export default function NetflixUI() {
       </div>
 
       {/* Continue Watching */}
-      <div className="px-6 mt-8 space-y-6 pb-20">
+      <div className="px-6 mt-8 space-y-6 pb-32">
         <div className="flex items-center justify-between">
           <h2 className="text-xl font-bold tracking-tight">Continue Watching</h2>
           <span className="text-xs text-red-600 font-bold">See All</span>
