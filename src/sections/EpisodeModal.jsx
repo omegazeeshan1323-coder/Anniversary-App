@@ -51,7 +51,7 @@ export default function EpisodeModal({ episode, onClose }) {
               {episode.media[currentIndex].toLowerCase().endsWith('.mp4') ? (
                 <video 
                   src={episode.media[currentIndex]} 
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-contain bg-black"
                   autoPlay
                   loop
                   muted
@@ -60,7 +60,7 @@ export default function EpisodeModal({ episode, onClose }) {
               ) : (
                 <img 
                   src={episode.media[currentIndex]} 
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-contain bg-black"
                   alt={episode.title}
                 />
               )}

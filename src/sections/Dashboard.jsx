@@ -67,11 +67,11 @@ export default function Dashboard() {
       {/* Hero Section */}
       <div className="relative h-[80vh] w-full overflow-hidden">
         <motion.img 
-          initial={{ scale: 1.1, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 1.5 }}
           src="/hero.png" 
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-contain bg-black"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent" />
@@ -122,10 +122,8 @@ export default function Dashboard() {
             <h2 className="text-xl md:text-2xl font-bold tracking-tight">{season.title}</h2>
             <div className="flex gap-4 overflow-x-auto no-scrollbar pb-4 -mx-6 px-6">
               {season.episodes.map((ep) => (
-                <motion.div
+                <div
                   key={ep.id}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
                   onClick={() => setSelectedEpisode(ep)}
                   className="flex-shrink-0 w-44 md:w-64 space-y-2 cursor-pointer group"
                 >
