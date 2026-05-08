@@ -42,15 +42,23 @@ export default function EpisodeModal({ episode, onClose }) {
           <AnimatePresence mode="wait">
             <motion.div
               key={currentIndex}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="w-full h-full flex items-center justify-center p-2"
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              onDragEnd={(e, { offset, velocity }) => {
+                const swipe = offset.x;
+                if (swipe < -50) next();
+                else if (swipe > 50) prev();
+              }}
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -50 }}
+              transition={{ type: 'spring', damping: 30, stiffness: 300 }}
+              className="w-full h-full flex items-center justify-center p-2 touch-none"
             >
               {episode.media[currentIndex].toLowerCase().endsWith('.mp4') ? (
                 <video 
                   src={episode.media[currentIndex]} 
-                  className="max-w-full max-h-full object-contain shadow-2xl"
+                  className="max-w-full max-h-full object-contain shadow-2xl pointer-events-none"
                   autoPlay
                   loop
                   muted
@@ -59,7 +67,7 @@ export default function EpisodeModal({ episode, onClose }) {
               ) : (
                 <img 
                   src={episode.media[currentIndex]} 
-                  className="max-w-full max-h-full object-contain shadow-2xl"
+                  className="max-w-full max-h-full object-contain shadow-2xl pointer-events-none select-none"
                   alt={episode.title}
                 />
               )}
