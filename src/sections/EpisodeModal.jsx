@@ -40,15 +40,31 @@ export default function EpisodeModal({ episode, onClose }) {
         {/* Media Slideshow */}
         <div className="relative flex-1 w-full flex items-center justify-center bg-black group">
           <AnimatePresence mode="wait">
-            <motion.img
+            <motion.div
               key={currentIndex}
-              src={episode.media[currentIndex]}
               initial={{ opacity: 0, x: 100 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -100 }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="w-full h-full object-contain"
-            />
+              className="w-full h-full"
+            >
+              {episode.media[currentIndex].toLowerCase().endsWith('.mp4') ? (
+                <video 
+                  src={episode.media[currentIndex]} 
+                  className="w-full h-full object-contain"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                />
+              ) : (
+                <img 
+                  src={episode.media[currentIndex]} 
+                  className="w-full h-full object-contain"
+                  alt={episode.title}
+                />
+              )}
+            </motion.div>
           </AnimatePresence>
 
           {/* Navigation Arrows */}

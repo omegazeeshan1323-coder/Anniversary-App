@@ -8,17 +8,17 @@ const seasons = [
   {
     title: "Season 1: The Beginning",
     episodes: [
-      { id: 101, title: "The First Hello", thumbnail: "/IMG_1658.JPG", description: "Where it all started. A simple message that changed our lives.", media: ["/IMG_1658.JPG"] },
-      { id: 102, title: "Our Coffee Spot", thumbnail: "/IMG_1665.JPG", description: "Writing on each other's hands and sharing secrets.", media: ["/IMG_1665.JPG"] },
-      { id: 103, title: "Late Night Walks", thumbnail: "/IMG_1670.JPG", description: "Walking through the city until sunrise.", media: ["/IMG_1670.JPG"] },
+      { id: 101, title: "The First Hello", thumbnail: "/IMG_1658.JPG", description: "Where it all started. A simple message that changed our lives.", media: ["/IMG_1658.JPG", "/WhatsApp Image 2026-05-08 at 11.51.14 AM.jpeg"] },
+      { id: 102, title: "Our Coffee Spot", thumbnail: "/IMG_1665.JPG", description: "Writing on each other's hands and sharing secrets.", media: ["/IMG_1665.JPG", "/WhatsApp Image 2026-05-08 at 11.51.14 AM (1).jpeg"] },
+      { id: 103, title: "Late Night Walks", thumbnail: "/IMG_1670.JPG", description: "Walking through the city until sunrise.", media: ["/IMG_1670.JPG", "/WhatsApp Image 2026-05-08 at 11.51.14 AM (2).jpeg"] },
     ]
   },
   {
     title: "Season 2: Adventures",
     episodes: [
-      { id: 201, title: "The Food Tour", thumbnail: "/IMG_1671.JPG", description: "Every meal with you is a 5-star experience.", media: ["/IMG_1658.JPG", "/IMG_1665.JPG", "/IMG_1670.JPG", "/IMG_1671.JPG"] },
-      { id: 202, title: "Road Trips", thumbnail: "/memory.png", description: "Losing our way but finding each other.", media: ["/memory.png"] },
-      { id: 203, title: "Celebrations", thumbnail: "/hero.png", description: "Cake, laughter, and your beautiful smile.", media: ["/hero.png"] },
+      { id: 201, title: "The Food Tour", thumbnail: "/IMG_1671.JPG", description: "Every meal with you is a 5-star experience.", media: ["/IMG_1658.JPG", "/IMG_1665.JPG", "/IMG_1670.JPG", "/IMG_1671.JPG", "/WhatsApp Image 2026-05-08 at 11.51.15 AM.jpeg"] },
+      { id: 202, title: "Road Trips", thumbnail: "/memory.png", description: "Losing our way but finding each other.", media: ["/memory.png", "/WhatsApp Image 2026-05-08 at 11.51.14 AM (3).jpeg"] },
+      { id: 203, title: "The New Clip", thumbnail: "/WhatsApp Image 2026-05-08 at 11.51.15 AM (1).jpeg", description: "A fresh memory from our latest adventure.", type: "video", media: ["/WhatsApp Video 2026-05-08 at 11.51.15 AM.mp4"] },
     ]
   },
   {
@@ -27,6 +27,13 @@ const seasons = [
       { id: 301, title: "Our Little World", thumbnail: "/montage.png", description: "Captured in the moment, forever in my heart.", media: ["/montage.png"] },
       { id: 302, title: "The Wrapped Story", thumbnail: "/wrapped.png", description: "Our year in review. Spoiler: I still love you.", media: ["/wrapped.png"] },
       { id: 303, title: "Beyond The Horizon", thumbnail: "/hero.png", description: "To many more seasons of us.", media: ["/hero.png"] },
+    ]
+  },
+  {
+    title: "Season 4: New Chapters",
+    episodes: [
+      { id: 401, title: "Latest Moments", thumbnail: "/WhatsApp Image 2026-05-08 at 11.51.14 AM.jpeg", description: "Fresh from the camera, these moments mean the world to me.", media: ["/WhatsApp Image 2026-05-08 at 11.51.14 AM.jpeg", "/WhatsApp Image 2026-05-08 at 11.51.14 AM (1).jpeg", "/WhatsApp Image 2026-05-08 at 11.51.14 AM (2).jpeg"] },
+      { id: 402, title: "Just Us", thumbnail: "/WhatsApp Image 2026-05-08 at 11.51.15 AM.jpeg", description: "No filter needed for a love like ours.", media: ["/WhatsApp Image 2026-05-08 at 11.51.15 AM.jpeg", "/WhatsApp Image 2026-05-08 at 11.51.15 AM (1).jpeg"] },
     ]
   }
 ];
