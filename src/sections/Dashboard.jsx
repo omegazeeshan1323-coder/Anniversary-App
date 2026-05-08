@@ -74,34 +74,34 @@ export default function Dashboard() {
           src="/hero.png" 
           className="max-w-full max-h-full object-contain"
         />
-        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-black via-black/80 to-transparent" />
 
-        <div className="absolute bottom-20 left-0 px-6 md:px-12 w-full md:max-w-2xl space-y-4">
+        <div className="absolute bottom-6 left-0 px-6 md:px-12 w-full md:max-w-2xl space-y-3">
           <motion.div
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.5 }}
           >
-            <div className="flex items-center gap-2 mb-2">
-              <span className="bg-red-600 px-1.5 py-0.5 rounded-sm text-[10px] font-black uppercase tracking-tighter italic">N Series</span>
+            <div className="flex items-center gap-2 mb-1">
+              <span className="bg-red-600 px-1.5 py-0.5 rounded-sm text-[8px] font-black uppercase tracking-tighter italic">N Series</span>
             </div>
-            <h1 className="text-5xl md:text-7xl font-black italic tracking-tighter uppercase leading-none mb-4">
+            <h1 className="text-4xl md:text-7xl font-black italic tracking-tighter uppercase leading-none mb-2">
               Doggesh &<br />Dustbin
             </h1>
-            <p className="text-sm md:text-lg text-gray-300 drop-shadow-lg leading-snug">
-              An epic 3-year journey of love, growth, and endless memories. Watch the story of how two strangers built a universe together.
+            <p className="text-[11px] md:text-lg text-gray-300 drop-shadow-lg leading-snug max-w-[280px]">
+              An epic 3-year journey of love, growth, and endless memories.
             </p>
           </motion.div>
 
-          <div className="flex items-center gap-3 pt-4">
+          <div className="flex items-center gap-2 pt-2">
             <button 
               onClick={() => setSelectedEpisode(seasons[0].episodes[0])}
-              className="flex-1 md:flex-none flex items-center justify-center gap-2 bg-white text-black py-3 px-8 rounded-md font-bold text-lg hover:bg-white/90 transition-transform active:scale-95"
+              className="flex-1 md:flex-none flex items-center justify-center gap-2 bg-white text-black py-2 px-6 rounded-md font-bold text-sm hover:bg-white/90 active:scale-95 transition-all"
             >
-              <Play className="w-6 h-6 fill-black" /> Play
+              <Play className="w-4 h-4 fill-black" /> Play
             </button>
-            <button className="flex-1 md:flex-none flex items-center justify-center gap-2 bg-gray-500/30 text-white py-3 px-8 rounded-md font-bold text-lg backdrop-blur-md border border-white/10">
-              <Plus className="w-6 h-6" /> My List
+            <button className="flex-1 md:flex-none flex items-center justify-center gap-2 bg-gray-500/40 text-white py-2 px-6 rounded-md font-bold text-sm backdrop-blur-md border border-white/10">
+              <Plus className="w-4 h-4" /> My List
             </button>
           </div>
         </div>
