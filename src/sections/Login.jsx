@@ -5,15 +5,17 @@ export default function Login({ onLogin }) {
   const [view, setView] = useState('profiles'); // 'profiles' or 'pin'
   const [pin, setPin] = useState('');
   const [error, setError] = useState(false);
+  const [activeProfile, setActiveProfile] = useState(null);
 
   const profiles = [
-    { name: 'Farhana', color: 'bg-blue-500', icon: '😊' },
-    { name: 'Zeish', color: 'bg-green-500', icon: '🐛' },
-    { name: 'Obaid', color: 'bg-red-500', icon: '😊' },
-    { name: 'Zeeshan', color: 'bg-purple-500', icon: '👩‍❤️‍👨', isTarget: true },
-    { name: 'Isha', color: 'bg-orange-500', icon: '👩' },
-    { name: 'Edit', color: 'bg-gray-800', icon: '✎', isEdit: true }
+    { name: 'Sai', color: 'bg-blue-500', icon: '👨‍💻' },
+    { name: 'Gouri', color: 'bg-red-600', icon: '👸' }
   ];
+
+  const handleProfileClick = (p) => {
+    setActiveProfile(p);
+    setView('pin');
+  };
 
   const handlePinSubmit = (e) => {
     e.preventDefault();
@@ -56,18 +58,18 @@ export default function Login({ onLogin }) {
             {/* Profiles Section */}
             <div className="flex-1 px-8 pt-12 pb-20">
               <p className="text-center text-sm text-gray-400 mb-8">Choose your profile</p>
-              <div className="grid grid-cols-3 gap-y-10 gap-x-6 max-w-sm mx-auto">
+              <div className="flex justify-center gap-12 max-w-sm mx-auto">
                 {profiles.map((p, i) => (
                   <motion.div
                     key={i}
                     whileTap={{ scale: 0.9 }}
-                    onClick={() => p.isTarget ? setView('pin') : null}
+                    onClick={() => handleProfileClick(p)}
                     className="flex flex-col items-center gap-2 group cursor-pointer"
                   >
-                    <div className={`w-20 h-20 rounded-md flex items-center justify-center text-3xl shadow-lg transition-all group-hover:ring-2 group-hover:ring-white ${p.color} ${p.isEdit ? 'border border-white/20 bg-transparent' : ''}`}>
+                    <div className={`w-24 h-24 rounded-md flex items-center justify-center text-4xl shadow-lg transition-all group-hover:ring-2 group-hover:ring-white ${p.color}`}>
                       {p.icon}
                     </div>
-                    <span className="text-xs font-medium text-gray-300 group-hover:text-white">
+                    <span className="text-sm font-medium text-gray-300 group-hover:text-white">
                       {p.name}
                     </span>
                   </motion.div>
@@ -82,13 +84,13 @@ export default function Login({ onLogin }) {
             animate={{ opacity: 1, scale: 1 }}
             className="flex-1 flex flex-col items-center justify-center gap-8 px-8"
           >
-            <div className="w-24 h-24 rounded-md bg-purple-500 flex items-center justify-center text-4xl shadow-2xl">
-              👩‍❤️‍👨
+            <div className={`w-24 h-24 rounded-md flex items-center justify-center text-4xl shadow-2xl ${activeProfile?.color}`}>
+              {activeProfile?.icon}
             </div>
             
             <div className="text-center space-y-2">
-              <h2 className="text-xl font-bold">Profile Lock is on.</h2>
-              <p className="text-sm text-gray-400">Enter password for Zeeshan</p>
+              <h2 className="text-xl font-bold text-white">Profile Lock is on.</h2>
+              <p className="text-sm text-gray-400">Enter password for {activeProfile?.name}</p>
             </div>
 
             <form onSubmit={handlePinSubmit} className="w-full max-w-xs space-y-6">
