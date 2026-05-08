@@ -138,7 +138,7 @@ export default function Dashboard() {
                     </div>
                   </div>
                   <p className="text-sm font-medium text-gray-300 group-hover:text-white transition-colors truncate">{ep.title}</p>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
