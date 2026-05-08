@@ -1,9 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Play, Plus, ThumbsUp, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useMusic } from '../context/MusicContext';
 
 export default function EpisodeModal({ episode, onClose }) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const { pauseMusic, resumeMusic } = useMusic();
+
+  const isCurrentVideo = episode.media[currentIndex].toLowerCase().endsWith('.mp4');
+
+  useEffect(() => {
+    if (isCurrentVideo) {
+      pauseMusic();
+    } else {
+      resumeMusic();
+    }
+  }, [currentIndex, isCurrentVideo]);
+
+  // Ensure music resumes when closing the modal
+  useEffect(() => {
+    return () => resumeMusic();
+  }, []);
 
   const next = () => {
     if (currentIndex < episode.media.length - 1) {
@@ -55,13 +72,12 @@ export default function EpisodeModal({ episode, onClose }) {
               transition={{ type: 'spring', damping: 30, stiffness: 300 }}
               className="w-full h-full flex items-center justify-center p-2 touch-none"
             >
-              {episode.media[currentIndex].toLowerCase().endsWith('.mp4') ? (
+              {isCurrentVideo ? (
                 <video 
                   src={episode.media[currentIndex]} 
-                  className="max-w-full max-h-full object-contain shadow-2xl pointer-events-none"
+                  className="max-w-full max-h-full object-contain shadow-2xl"
                   autoPlay
                   loop
-                  muted
                   playsInline
                 />
               ) : (
