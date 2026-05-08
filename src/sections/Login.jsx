@@ -9,7 +9,7 @@ export default function Login({ onLogin }) {
   const [error, setError] = useState(false);
   const { playTadum, startMusic } = useMusic();
 
-  const CORRECT_PIN = '1323';
+  const CORRECT_PIN = '0309';
 
   const handleProfileClick = () => {
     setView('pin');
@@ -63,7 +63,7 @@ export default function Login({ onLogin }) {
               <div className="w-32 h-32 md:w-40 md:h-40 rounded-md bg-red-600 flex items-center justify-center shadow-2xl transition-all group-hover:ring-4 group-hover:ring-white">
                 <span className="text-6xl">❤️</span>
               </div>
-              <span className="text-xl text-gray-400 group-hover:text-white transition-colors uppercase tracking-widest font-medium">My Love</span>
+              <span className="text-xl text-gray-400 group-hover:text-white transition-colors uppercase tracking-widest font-medium">Sana</span>
             </motion.div>
 
             <button className="px-8 py-2 border border-white/40 text-gray-500 hover:text-white hover:border-white transition-all text-sm uppercase tracking-[0.3em]">
