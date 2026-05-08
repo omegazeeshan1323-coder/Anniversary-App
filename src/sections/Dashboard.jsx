@@ -8,26 +8,20 @@ const seasons = [
   {
     title: "Season 1: The Beginning",
     episodes: [
-      { id: 101, title: "The first Hello", thumbnail: "/IMG_1658.JPG", description: "Where the spark first ignited. A simple hello that changed everything.", media: ["/IMG_1658.JPG"] },
+      { id: 101, title: "The first Hello", thumbnail: "/IMG_1658.JPG", description: "Where the spark first ignited. A simple hello that changed everything.", media: ["/IMG_1658.JPG", "/IMG_1665.JPG"] },
       { 
         id: 102, 
         title: "Our first date", 
         thumbnail: "/first date.jpeg", 
-        description: "Coffee, nerves, and that feeling that you were the one. Every moment was a dream.", 
-        media: ["/first date.mp4", "/first date.jpeg", "/first date (2).jpeg", "/IMG_1665.JPG", "/IMG_1671.JPG"] 
+        description: "Coffee, nerves, and that feeling that you were the one.", 
+        media: ["/first date.mp4", "/first date.jpeg", "/first date (2).jpeg", "/first date (3).jpeg", "/first date (4).jpeg"] 
       },
       { 
         id: 103, 
         title: "Gmeets", 
         thumbnail: "/gmeet.jpeg", 
-        description: "Distance was just a number when we had our late-night screens. Every screenshot and recording is a treasure.", 
-        media: [
-          "/gmeet.mp4", "/gmeet.jpeg", "/gmeet (2).mp4", "/gmeet (2).jpeg", "/gmeet (3).mp4", "/gmeet (3).jpeg", "/gmeet (4).mp4", "/gmeet.png", "/gmeet (2).png",
-          "/WhatsApp Video 2026-05-08 at 12.28.41 PM.mp4", "/WhatsApp Video 2026-05-08 at 12.28.43 PM.mp4", "/WhatsApp Video 2026-05-08 at 12.28.48 PM.mp4",
-          "/WhatsApp Image 2026-05-08 at 12.28.44 PM.jpeg", "/WhatsApp Image 2026-05-08 at 12.28.45 PM.jpeg", "/WhatsApp Image 2026-05-08 at 12.28.47 PM.jpeg",
-          "/WhatsApp Image 2026-05-08 at 12.28.49 PM.jpeg", "/WhatsApp Image 2026-05-08 at 12.28.50 PM.jpeg", "/WhatsApp Image 2026-05-08 at 12.28.56 PM.jpeg",
-          "/WhatsApp Image 2026-05-08 at 11.51.14 AM.jpeg", "/WhatsApp Image 2026-05-08 at 11.51.14 AM (1).jpeg", "/WhatsApp Image 2026-05-08 at 11.51.14 AM (2).jpeg"
-        ] 
+        description: "Distance was just a number when we had our late-night screens.", 
+        media: ["/gmeet.mp4", "/gmeet.jpeg", "/gmeet (2).mp4", "/gmeet (2).jpeg", "/gmeet (3).mp4", "/gmeet (3).jpeg", "/gmeet (4).mp4", "/gmeet.png", "/gmeet (2).png"] 
       },
     ]
   },
@@ -38,25 +32,28 @@ const seasons = [
         id: 201, 
         title: "Food Tour", 
         thumbnail: "/IMG_1670.JPG", 
-        description: "From McD fries to rooftop treats. Every video and photo of our delicious journey.", 
-        media: [
-          "/IMG_1670.JPG", 
-          "/-3905718339118603128.MP4",
-          "/6253243033101760670.MP4",
-          "/6737424863088449495.MP4",
-          "/6857776767886984412.MP4",
-          "/7262058012806167165.MP4",
-          "/7899805083313960292.MP4",
-          "/WhatsApp Video 2026-05-08 at 11.51.15 AM.mp4"
-        ] 
+        description: "From McD fries to rooftop treats. Our delicious journey.", 
+        media: ["/IMG_1670.JPG", "/IMG_1671.JPG", "/-3905718339118603128.MP4", "/6253243033101760670.MP4", "/6737424863088449495.MP4", "/6857776767886984412.MP4", "/7262058012806167165.MP4", "/7899805083313960292.MP4"] 
       },
-      { id: 202, title: "Adventures", thumbnail: "/IMG_1671.JPG", description: "Getting lost, finding beauty, and making every second count.", media: ["/montage.png", "/IMG_1671.JPG"] },
+      { 
+        id: 202, 
+        title: "Adventures", 
+        thumbnail: "/adventures.jpeg", 
+        description: "Getting lost, finding beauty, and making every second count.", 
+        media: ["/adventures.mp4", "/adventures.jpeg", "/adventures (2).mp4", "/adventures (2).jpeg", "/adventures (3).mp4", "/adventures (3).jpeg", "/adventures (4).jpeg", "/adventures (5).jpeg", "/adventures (6).jpeg", "/adventures (7).jpeg", "/adventures (8).jpeg"] 
+      },
     ]
   },
   {
     title: "Season 3: Forever",
     episodes: [
-      { id: 301, title: "Cloud 9", thumbnail: "/hero.png", description: "Living the dream. To every moment we've spent in our little bubble.", media: ["/hero.png", "/montage.png"] },
+      { 
+        id: 301, 
+        title: "Cloud 9", 
+        thumbnail: "/Cloud 9.jpeg", 
+        description: "Living the dream. To every moment we've spent in our little bubble.", 
+        media: ["/cloud 9.mp4", "/Cloud 9.jpeg", "/Cloud 9 (2).jpeg", "/Cloud 9 (3).jpeg", "/Cloud 9 (4).jpeg", "/Cloud 9 (5).jpeg", "/cloud 9 (6).jpeg", "/cloud 9 (7).jpeg", "/cloud 9 (8).jpeg", "/hero.png", "/montage.png"] 
+      },
     ]
   }
 ];
