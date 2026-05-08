@@ -120,6 +120,10 @@ export default function NetflixUI() {
         </div>
       </div>
 
+      <div className="text-[8px] text-white/10 text-center pb-4 uppercase tracking-[0.5em]">
+        Version 2.0 — Optimized for iPhone
+      </div>
+
       {/* Episode Detail Overlay */}
       <AnimatePresence>
         {selectedEpisode && (
