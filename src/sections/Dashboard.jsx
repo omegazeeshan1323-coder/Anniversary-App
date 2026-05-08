@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Play, Info, Volume2, VolumeX, Plus, Check } from 'lucide-react';
 import { useMusic } from '../context/MusicContext';
 import EpisodeModal from './EpisodeModal';
+import FinalEnding from './FinalEnding';
 
 const seasons = [
   {
@@ -144,6 +145,8 @@ export default function Dashboard() {
           </div>
         ))}
       </div>
+
+      <FinalEnding />
 
       {/* Episode Modal */}
       <AnimatePresence>
