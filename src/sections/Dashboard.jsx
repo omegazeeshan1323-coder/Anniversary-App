@@ -9,19 +9,24 @@ const seasons = [
     title: "Season 1: The Beginning",
     episodes: [
       { id: 101, title: "The first Hello", thumbnail: "/IMG_1658.JPG", description: "Where the spark first ignited. A simple hello that changed everything.", media: ["/IMG_1658.JPG"] },
-      { id: 102, title: "Our first date", thumbnail: "/IMG_1665.JPG", description: "Coffee, nerves, and that feeling that you were the one.", media: ["/IMG_1665.JPG", "/IMG_1671.JPG"] },
+      { 
+        id: 102, 
+        title: "Our first date", 
+        thumbnail: "/first date.jpeg", 
+        description: "Coffee, nerves, and that feeling that you were the one. Every moment was a dream.", 
+        media: ["/first date.mp4", "/first date.jpeg", "/first date (2).jpeg", "/IMG_1665.JPG", "/IMG_1671.JPG"] 
+      },
       { 
         id: 103, 
         title: "Gmeets", 
-        thumbnail: "/WhatsApp Image 2026-05-08 at 11.51.14 AM (2).jpeg", 
-        description: "Distance was just a number when we had our late-night screens. Every screenshot is a treasure.", 
+        thumbnail: "/gmeet.jpeg", 
+        description: "Distance was just a number when we had our late-night screens. Every screenshot and recording is a treasure.", 
         media: [
-          "/WhatsApp Image 2026-05-08 at 11.51.14 AM.jpeg", 
-          "/WhatsApp Image 2026-05-08 at 11.51.14 AM (1).jpeg", 
-          "/WhatsApp Image 2026-05-08 at 11.51.14 AM (2).jpeg", 
-          "/WhatsApp Image 2026-05-08 at 11.51.14 AM (3).jpeg",
-          "/WhatsApp Image 2026-05-08 at 11.51.15 AM.jpeg",
-          "/WhatsApp Image 2026-05-08 at 11.51.15 AM (1).jpeg"
+          "/gmeet.mp4", "/gmeet.jpeg", "/gmeet (2).mp4", "/gmeet (2).jpeg", "/gmeet (3).mp4", "/gmeet (3).jpeg", "/gmeet (4).mp4", "/gmeet.png", "/gmeet (2).png",
+          "/WhatsApp Video 2026-05-08 at 12.28.41 PM.mp4", "/WhatsApp Video 2026-05-08 at 12.28.43 PM.mp4", "/WhatsApp Video 2026-05-08 at 12.28.48 PM.mp4",
+          "/WhatsApp Image 2026-05-08 at 12.28.44 PM.jpeg", "/WhatsApp Image 2026-05-08 at 12.28.45 PM.jpeg", "/WhatsApp Image 2026-05-08 at 12.28.47 PM.jpeg",
+          "/WhatsApp Image 2026-05-08 at 12.28.49 PM.jpeg", "/WhatsApp Image 2026-05-08 at 12.28.50 PM.jpeg", "/WhatsApp Image 2026-05-08 at 12.28.56 PM.jpeg",
+          "/WhatsApp Image 2026-05-08 at 11.51.14 AM.jpeg", "/WhatsApp Image 2026-05-08 at 11.51.14 AM (1).jpeg", "/WhatsApp Image 2026-05-08 at 11.51.14 AM (2).jpeg"
         ] 
       },
     ]
@@ -45,13 +50,13 @@ const seasons = [
           "/WhatsApp Video 2026-05-08 at 11.51.15 AM.mp4"
         ] 
       },
-      { id: 202, title: "Adventures", thumbnail: "/memory.png", description: "Getting lost, finding beauty, and making every second count.", media: ["/memory.png", "/IMG_1671.JPG"] },
+      { id: 202, title: "Adventures", thumbnail: "/IMG_1671.JPG", description: "Getting lost, finding beauty, and making every second count.", media: ["/montage.png", "/IMG_1671.JPG"] },
     ]
   },
   {
     title: "Season 3: Forever",
     episodes: [
-      { id: 301, title: "Cloud 9", thumbnail: "/hero.png", description: "Living the dream. To every moment we've spent in our little bubble.", media: ["/hero.png", "/montage.png", "/wrapped.png"] },
+      { id: 301, title: "Cloud 9", thumbnail: "/hero.png", description: "Living the dream. To every moment we've spent in our little bubble.", media: ["/hero.png", "/montage.png"] },
     ]
   }
 ];
