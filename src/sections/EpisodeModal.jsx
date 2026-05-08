@@ -42,16 +42,15 @@ export default function EpisodeModal({ episode, onClose }) {
           <AnimatePresence mode="wait">
             <motion.div
               key={currentIndex}
-              initial={{ opacity: 0, x: 100 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -100 }}
-              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="w-full h-full"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="w-full h-full flex items-center justify-center p-2"
             >
               {episode.media[currentIndex].toLowerCase().endsWith('.mp4') ? (
                 <video 
                   src={episode.media[currentIndex]} 
-                  className="w-full h-full object-contain bg-black"
+                  className="max-w-full max-h-full object-contain shadow-2xl"
                   autoPlay
                   loop
                   muted
@@ -60,7 +59,7 @@ export default function EpisodeModal({ episode, onClose }) {
               ) : (
                 <img 
                   src={episode.media[currentIndex]} 
-                  className="w-full h-full object-contain bg-black"
+                  className="max-w-full max-h-full object-contain shadow-2xl"
                   alt={episode.title}
                 />
               )}

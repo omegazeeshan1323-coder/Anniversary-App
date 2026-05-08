@@ -64,17 +64,16 @@ export default function Dashboard() {
 
   return (
     <div className="min-h-screen bg-black text-white selection:bg-red-600 pb-24">
-      {/* Hero Section */}
-      <div className="relative h-[80vh] w-full overflow-hidden">
+      {/* Hero Section - Fixed to prevent zoom/crop */}
+      <div className="relative w-full h-[70vh] flex items-center justify-center bg-black pt-4">
         <motion.img 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1.5 }}
+          transition={{ duration: 1 }}
           src="/hero.png" 
-          className="absolute inset-0 w-full h-full object-contain bg-black"
+          className="max-w-full max-h-full object-contain"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black to-transparent" />
 
         <div className="absolute bottom-20 left-0 px-6 md:px-12 w-full md:max-w-2xl space-y-4">
           <motion.div
