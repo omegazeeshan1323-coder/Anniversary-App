@@ -4,7 +4,7 @@ import { Music, ExternalLink } from 'lucide-react';
 
 export default function FinalEnding() {
   // Replace this with your actual Spotify Playlist URL
-  const SPOTIFY_PLAYLIST_URL = "https://open.spotify.com/playlist/YOUR_PLAYLIST_ID";
+  const SPOTIFY_PLAYLIST_URL = "https://open.spotify.com/playlist/3ZoX1o4sfOGNAfLJsb2yLm";
 
   return (
     <div className="min-h-screen bg-black flex flex-col items-center justify-center text-center px-8 relative overflow-hidden">
