@@ -64,19 +64,44 @@ export default function Dashboard() {
   const { isMuted, toggleMute } = useMusic();
 
   return (
-    <div className="min-h-screen bg-black text-white selection:bg-red-600 pb-24">
-      {/* Hero Section - Fixed to prevent zoom/crop */}
-      <div className="relative w-full h-[70vh] flex items-center justify-center bg-black pt-4">
+    <div className="min-h-screen bg-black text-white selection:bg-red-600 pb-24 relative">
+      
+      {/* 1. Top Navigation Bar */}
+      <nav className="fixed top-0 left-0 w-full z-[80] bg-gradient-to-b from-black/80 to-transparent px-6 py-6 flex items-center justify-between">
+        <div className="flex items-center gap-8">
+          <span className="text-red-600 text-3xl font-black italic tracking-tighter uppercase">N</span>
+          <div className="hidden md:flex items-center gap-6 text-sm font-medium text-gray-300">
+            <span className="text-white">Home</span>
+            <span>TV Shows</span>
+            <span>Movies</span>
+            <span>New & Popular</span>
+            <span>My List</span>
+          </div>
+          {/* Mobile Categories */}
+          <div className="md:hidden flex items-center gap-5 text-[11px] font-bold uppercase tracking-widest text-gray-200">
+            <span>TV Shows</span>
+            <span>Movies</span>
+            <span>Categories</span>
+          </div>
+        </div>
+        <div className="flex items-center gap-5">
+          <div className="w-8 h-8 rounded bg-red-600 flex items-center justify-center text-xs">❤️</div>
+        </div>
+      </nav>
+
+      {/* 2. Hero Section - Full Screen Cinematic */}
+      <div className="relative h-[95vh] w-full overflow-hidden">
         <motion.img 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
+          transition={{ duration: 1.5 }}
           src="/hero.png" 
-          className="max-w-full max-h-full object-contain"
+          className="absolute inset-0 w-full h-full object-cover object-top"
         />
-        <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-black via-black/80 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent" />
 
-        <div className="absolute bottom-6 left-0 px-6 md:px-12 w-full md:max-w-2xl space-y-3">
+        <div className="absolute bottom-12 left-0 px-6 md:px-12 w-full md:max-w-2xl space-y-4">
           <motion.div
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -88,20 +113,20 @@ export default function Dashboard() {
             <h1 className="text-4xl md:text-7xl font-black italic tracking-tighter uppercase leading-none mb-2">
               Doggesh &<br />Dustbin
             </h1>
-            <p className="text-[11px] md:text-lg text-gray-300 drop-shadow-lg leading-snug max-w-[280px]">
+            <p className="text-[12px] md:text-lg text-gray-300 drop-shadow-lg leading-snug max-w-[300px]">
               An epic 3-year journey of love, growth, and endless memories.
             </p>
           </motion.div>
 
-          <div className="flex items-center gap-2 pt-2">
+          <div className="flex items-center gap-2">
             <button 
               onClick={() => setSelectedEpisode(seasons[0].episodes[0])}
-              className="flex-1 md:flex-none flex items-center justify-center gap-2 bg-white text-black py-2 px-6 rounded-md font-bold text-sm hover:bg-white/90 active:scale-95 transition-all"
+              className="flex-1 md:flex-none flex items-center justify-center gap-2 bg-white text-black py-2.5 px-8 rounded-md font-bold text-sm hover:bg-white/90 active:scale-95 transition-all"
             >
-              <Play className="w-4 h-4 fill-black" /> Play
+              <Play className="w-5 h-5 fill-black" /> Play
             </button>
-            <button className="flex-1 md:flex-none flex items-center justify-center gap-2 bg-gray-500/40 text-white py-2 px-6 rounded-md font-bold text-sm backdrop-blur-md border border-white/10">
-              <Plus className="w-4 h-4" /> My List
+            <button className="flex-1 md:flex-none flex items-center justify-center gap-2 bg-gray-500/40 text-white py-2.5 px-8 rounded-md font-bold text-sm backdrop-blur-md border border-white/10">
+              <Plus className="w-5 h-5" /> My List
             </button>
           </div>
         </div>
@@ -109,14 +134,24 @@ export default function Dashboard() {
         {/* Global Mute Toggle */}
         <button 
           onClick={toggleMute}
-          className="absolute top-10 right-6 md:right-12 p-3 rounded-full border border-white/20 backdrop-blur-md bg-black/20 text-white hover:bg-white/10 transition-all z-20"
+          className="absolute top-24 right-6 md:right-12 p-3 rounded-full border border-white/20 backdrop-blur-md bg-black/20 text-white hover:bg-white/10 transition-all z-[90]"
         >
-          {isMuted ? <VolumeX className="w-6 h-6" /> : <Volume2 className="w-6 h-6" />}
+          {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
         </button>
+
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50">
+          <p className="text-[8px] uppercase tracking-[0.3em]">Swipe Up</p>
+          <motion.div 
+            animate={{ y: [0, 5, 0] }}
+            transition={{ repeat: Infinity, duration: 2 }}
+            className="w-1 h-4 bg-white/40 rounded-full"
+          />
+        </div>
       </div>
 
       {/* Season Rows */}
-      <div className="px-6 md:px-12 -mt-10 relative z-10 space-y-12 pb-20">
+      <div className="px-6 md:px-12 -mt-24 relative z-10 space-y-12 pb-20">
         {seasons.map((season, idx) => (
           <div key={idx} className="space-y-4">
             <h2 className="text-xl md:text-2xl font-bold tracking-tight">{season.title}</h2>
