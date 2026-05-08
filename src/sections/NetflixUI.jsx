@@ -3,14 +3,21 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Play, Plus, Info, X, ChevronRight, Volume2, VolumeX } from 'lucide-react';
 
 const episodes = [
-  { id: 1, title: "Our First Date", type: "image", duration: "1s", description: "Where it all began. The message that set the tone, followed by writing 'coffee' on each other's hands.", thumbnail: "/IMG_1658.JPG" },
-  { id: 2, title: "Late Night Cravings", type: "video", duration: "Daily", description: "From McD fries to rooftop dinners. Every meal was an adventure with you.", thumbnail: "/IMG_1665.JPG", video: "/-3905718339118603128.MP4" },
-  { id: 3, title: "Midnight Car Rides", type: "video", duration: "∞", description: "Midnight escapes and winding roads. The best conversations happen when we're going nowhere.", thumbnail: "/IMG_1670.JPG", video: "/6253243033101760670.MP4" },
-  { id: 4, title: "The Terrace May 14th", type: "image", duration: "7 PM", description: "Sneaking inside Mantri and carrying you on the terrace under the stars.", thumbnail: "/IMG_1671.JPG" },
-  { id: 5, title: "Sweet Moments", type: "video", duration: "2m", description: "Just you being the cutest person alive.", thumbnail: "/memory.png", video: "/6737424863088449495.MP4" },
-  { id: 6, title: "Our Little World", type: "video", duration: "1m", description: "Captured in the moment, forever in my heart.", thumbnail: "/montage.png", video: "/6857776767886984412.MP4" },
-  { id: 7, title: "Food Diaries Pt. 1", type: "video", duration: "30s", description: "Another delicious chapter of our story.", thumbnail: "/hero.png", video: "/7262058012806167165.MP4" },
-  { id: 8, title: "Forever & Always", type: "video", duration: "45s", description: "To many more years of this.", thumbnail: "/wrapped.png", video: "/7899805083313960292.MP4" },
+  { 
+    id: 1, 
+    title: "The Food Diaries", 
+    type: "gallery", 
+    duration: "Daily", 
+    description: "Every meal was an adventure with you. From McD fries to rooftop dinners and everything in between.", 
+    thumbnail: "/IMG_1665.JPG",
+    images: ["/IMG_1658.JPG", "/IMG_1665.JPG", "/IMG_1670.JPG", "/IMG_1671.JPG"]
+  },
+  { id: 2, title: "Late Night Cravings", type: "video", duration: "1m", description: "Those random midnight hunger pangs that always led to the best memories.", thumbnail: "/IMG_1665.JPG", video: "/-3905718339118603128.MP4" },
+  { id: 3, title: "Midnight Car Rides", type: "video", duration: "2m", description: "Midnight escapes and winding roads. The best conversations happen when we're going nowhere.", thumbnail: "/IMG_1670.JPG", video: "/6253243033101760670.MP4" },
+  { id: 4, title: "Sweet Moments", type: "video", duration: "2m", description: "Just you being the cutest person alive.", thumbnail: "/memory.png", video: "/6737424863088449495.MP4" },
+  { id: 5, title: "Our Little World", type: "video", duration: "1m", description: "Captured in the moment, forever in my heart.", thumbnail: "/montage.png", video: "/6857776767886984412.MP4" },
+  { id: 6, title: "Dinner Dates", type: "video", duration: "30s", description: "Another delicious chapter of our story.", thumbnail: "/hero.png", video: "/7262058012806167165.MP4" },
+  { id: 7, title: "Forever & Always", type: "video", duration: "45s", description: "To many more years of this.", thumbnail: "/wrapped.png", video: "/7899805083313960292.MP4" },
 ];
 
 export default function NetflixUI() {
@@ -85,7 +92,7 @@ export default function NetflixUI() {
                     <Play className="w-5 h-5 fill-white ml-1" />
                   </div>
                 </div>
-                {ep.type === 'video' && (
+                {(ep.type === 'video' || ep.type === 'gallery') && (
                   <div className="absolute top-2 right-2 bg-black/60 p-1.5 rounded-md backdrop-blur-md border border-white/10">
                     <Play className="w-3 h-3 fill-white" />
                   </div>
@@ -93,7 +100,7 @@ export default function NetflixUI() {
               </div>
               <div className="space-y-0.5">
                 <p className="text-sm font-bold text-gray-200 line-clamp-1 uppercase tracking-tight">{ep.title}</p>
-                <p className="text-[10px] text-gray-500 font-medium">Episode {ep.id} • {ep.duration}</p>
+                <p className="text-[10px] text-gray-500 font-medium">Episode {ep.id} • {ep.type.toUpperCase()}</p>
               </div>
             </motion.div>
           ))}
@@ -137,7 +144,7 @@ export default function NetflixUI() {
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
             className="fixed inset-0 z-50 bg-[#141414] rounded-t-[2.5rem] overflow-hidden"
           >
-            <div className="relative h-[55vh] md:h-[60vh]">
+            <div className="relative h-[55vh]">
               {selectedEpisode.type === 'video' ? (
                 <div className="relative w-full h-full">
                   <video
@@ -156,6 +163,20 @@ export default function NetflixUI() {
                     {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
                   </button>
                 </div>
+              ) : selectedEpisode.type === 'gallery' ? (
+                <div className="flex overflow-x-auto snap-x snap-mandatory h-full no-scrollbar">
+                  {selectedEpisode.images.map((img, i) => (
+                    <div key={i} className="flex-shrink-0 w-full h-full snap-center">
+                      <img src={img} className="w-full h-full object-cover" alt={`Gallery ${i}`} />
+                    </div>
+                  ))}
+                  {/* Swipe indicator */}
+                  <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-1.5">
+                    {selectedEpisode.images.map((_, i) => (
+                      <div key={i} className="w-1.5 h-1.5 rounded-full bg-white/30" />
+                    ))}
+                  </div>
+                </div>
               ) : (
                 <img src={selectedEpisode.thumbnail} className="w-full h-full object-cover" alt={selectedEpisode.title} />
               )}
@@ -166,32 +187,33 @@ export default function NetflixUI() {
               >
                 <X className="w-6 h-6" />
               </button>
-              <div className="absolute inset-0 bg-gradient-to-t from-[#141414] via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#141414] via-transparent to-transparent pointer-events-none" />
             </div>
             
             <div className="p-8 space-y-6 overflow-y-auto max-h-[45vh]">
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
                   <div className="bg-red-600 px-1 text-[8px] font-bold rounded-sm uppercase tracking-tighter">Episode {selectedEpisode.id}</div>
-                  <h3 className="text-3xl font-black italic tracking-tighter uppercase">{selectedEpisode.title}</h3>
+                  <h3 className="text-2xl font-black italic tracking-tighter uppercase">{selectedEpisode.title}</h3>
                 </div>
                 <div className="flex items-center gap-3 text-sm text-green-500 font-bold">
                   <span>99% Match</span>
-                  <span className="text-gray-400">2021 - 2024</span>
-                  <span className="border border-gray-600 px-1 rounded text-[10px]">4K</span>
+                  <span className="text-gray-400">2024</span>
+                  <span className="border border-gray-600 px-1 rounded text-[10px]">{selectedEpisode.type === 'gallery' ? 'GALLERY' : '4K'}</span>
                 </div>
               </div>
               
               <p className="text-gray-300 leading-relaxed text-sm">
                 {selectedEpisode.description}
+                {selectedEpisode.type === 'gallery' && <span className="block mt-2 text-xs text-white/50 italic">Swipe left to see more photos →</span>}
               </p>
 
               <div className="flex gap-3">
                 <button 
                   onClick={() => setSelectedEpisode(null)}
-                  className="flex-1 bg-white text-black py-3.5 rounded-lg font-bold flex items-center justify-center gap-2 active:scale-95 transition-transform"
+                  className="flex-1 bg-white text-black py-3.5 rounded-lg font-bold flex items-center justify-center gap-2"
                 >
-                  <Play className="w-5 h-5 fill-black" /> Resume
+                  <Play className="w-5 h-5 fill-black" /> {selectedEpisode.type === 'gallery' ? 'View Photos' : 'Resume'}
                 </button>
                 <button className="p-3.5 rounded-lg bg-gray-600/40 backdrop-blur-md border border-white/10">
                   <Plus className="w-6 h-6" />
