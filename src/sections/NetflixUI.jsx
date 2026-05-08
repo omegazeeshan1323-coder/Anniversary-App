@@ -1,6 +1,7 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, Plus, Info, X, ChevronRight, Volume2, VolumeX } from 'lucide-react';
+import { useMusic } from '../context/MusicContext';
 
 const episodes = [
   { 
@@ -23,7 +24,24 @@ const episodes = [
 export default function NetflixUI() {
   const [selectedEpisode, setSelectedEpisode] = useState(null);
   const [isMuted, setIsMuted] = useState(true);
+  const [wasMusicPlaying, setWasMusicPlaying] = useState(false);
   const videoRef = useRef(null);
+  const { isPlaying, togglePlay } = useMusic();
+
+  // Sync with global music player
+  useEffect(() => {
+    if (selectedEpisode) {
+      if (isPlaying) {
+        setWasMusicPlaying(true);
+        togglePlay(); // Pause
+      }
+    } else {
+      if (wasMusicPlaying && !isPlaying) {
+        togglePlay(); // Resume
+        setWasMusicPlaying(false);
+      }
+    }
+  }, [selectedEpisode]);
 
   return (
     <div className="relative min-h-screen bg-black text-white overflow-x-hidden">
@@ -182,12 +200,16 @@ export default function NetflixUI() {
               )}
               
               <button 
-                onClick={() => setSelectedEpisode(null)}
-                className="absolute top-6 right-6 w-10 h-10 rounded-full bg-black/50 flex items-center justify-center backdrop-blur-md border border-white/20"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setSelectedEpisode(null);
+                }}
+                className="absolute top-6 right-6 w-12 h-12 rounded-full bg-black/60 flex items-center justify-center backdrop-blur-md border border-white/20 z-50 active:scale-90 transition-transform"
+                aria-label="Close"
               >
-                <X className="w-6 h-6" />
+                <X className="w-8 h-8 text-white" />
               </button>
-              <div className="absolute inset-0 bg-gradient-to-t from-[#141414] via-transparent to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#141414] via-transparent to-transparent pointer-events-none z-10" />
             </div>
             
             <div className="p-8 space-y-6 overflow-y-auto max-h-[45vh]">
