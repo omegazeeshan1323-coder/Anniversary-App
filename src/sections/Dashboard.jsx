@@ -91,12 +91,25 @@ export default function Dashboard() {
         <div className="absolute inset-0 z-20 bg-gradient-to-t from-black via-transparent to-transparent" />
         <div className="absolute inset-0 z-20 bg-gradient-to-b from-black/40 via-transparent to-transparent" />
 
-        <div className="absolute bottom-24 left-0 px-6 md:px-12 w-full md:max-w-2xl space-y-4 z-30">
+        <div className="absolute bottom-12 left-0 px-6 md:px-12 w-full md:max-w-2xl space-y-4 z-30">
           <motion.div
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.5 }}
           >
+            {/* New Soundtrack Poster */}
+            <motion.div
+              animate={{ y: [0, -5, 0] }}
+              transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+              className="mb-8"
+            >
+              <img 
+                src="/poster.jpeg" 
+                className="w-48 md:w-64 rounded-lg shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10"
+                alt="Soundtrack Poster"
+              />
+            </motion.div>
+
             <div className="flex items-center gap-2 mb-1">
               <span className="bg-red-600 px-1.5 py-0.5 rounded-sm text-[8px] font-black uppercase tracking-tighter italic">N Series</span>
             </div>
